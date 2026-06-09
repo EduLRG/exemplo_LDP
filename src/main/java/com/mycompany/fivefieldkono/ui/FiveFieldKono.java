@@ -14,7 +14,6 @@ public class FiveFieldKono extends Application {
 
     @Override
     public void start(Stage stage) {
-        // Ecrã de entrada: escolher Servidor ou Cliente
         Label titulo = new Label("Five Field Kono");
         titulo.setFont(Font.font(28));
 
@@ -24,7 +23,20 @@ public class FiveFieldKono extends Application {
         btnServidor.setPrefWidth(220);
         btnCliente.setPrefWidth(220);
 
-        btnServidor.setOnAction(e -> abrirJogo(stage, true, "localhost"));
+        btnServidor.setOnAction(e -> {
+            try {
+                String ip = java.net.InetAddress.getLocalHost().getHostAddress();
+                Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                alerta.setTitle("Servidor Criado");
+                alerta.setHeaderText("Partilha este IP com o teu colega:");
+                alerta.setContentText("📡 IP: " + ip + "\n🔌 Porta: 6666\n\nAguarda que o colega se ligue...");
+                alerta.show();
+                abrirJogo(stage, true, "localhost");
+            } catch (Exception ex) {
+                abrirJogo(stage, true, "localhost");
+            }
+        });
+
         btnCliente.setOnAction(e -> {
             TextInputDialog dialog = new TextInputDialog("localhost");
             dialog.setTitle("Ligar ao Servidor");
