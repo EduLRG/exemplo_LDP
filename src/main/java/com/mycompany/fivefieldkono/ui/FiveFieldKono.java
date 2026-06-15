@@ -25,13 +25,36 @@ public class FiveFieldKono extends Application {
 
         btnServidor.setOnAction(e -> {
             try {
-                String ip = java.net.InetAddress.getLocalHost().getHostAddress();
+                // Percorre todas as interfaces para encontrar IP local correto
+                String ipEncontrado = "Não encontrado";
+                java.util.Enumeration<java.net.NetworkInterface> interfaces =
+                    java.net.NetworkInterface.getNetworkInterfaces();
+
+                while (interfaces.hasMoreElements()) {
+                    java.net.NetworkInterface iface = interfaces.nextElement();
+                    if (!iface.isUp() || iface.isLoopback()) continue;
+
+                    java.util.Enumeration<java.net.InetAddress> enderecos =
+                        iface.getInetAddresses();
+
+                    while (enderecos.hasMoreElements()) {
+                        java.net.InetAddress addr = enderecos.nextElement();
+                        String ip = addr.getHostAddress();
+                        if (!addr.isLoopbackAddress() && ip.contains(".") &&
+                            (ip.startsWith("192.168") || ip.startsWith("10.") || ip.startsWith("172."))) {
+                            ipEncontrado = ip;
+                            break;
+                        }
+                    }
+                }
+
                 Alert alerta = new Alert(Alert.AlertType.INFORMATION);
                 alerta.setTitle("Servidor Criado");
                 alerta.setHeaderText("Partilha este IP com o teu colega:");
-                alerta.setContentText("📡 IP: " + ip + "\n🔌 Porta: 6666\n\nAguarda que o colega se ligue...");
+                alerta.setContentText("📡 IP: " + ipEncontrado + "\n🔌 Porta: 6666\n\nAguarda que o colega se ligue...");
                 alerta.show();
                 abrirJogo(stage, true, "localhost");
+
             } catch (Exception ex) {
                 abrirJogo(stage, true, "localhost");
             }
@@ -41,7 +64,7 @@ public class FiveFieldKono extends Application {
             TextInputDialog dialog = new TextInputDialog("localhost");
             dialog.setTitle("Ligar ao Servidor");
             dialog.setHeaderText("Endereço IP do servidor:");
-            dialog.showAndWait().ifPresent(ip -> abrirJogo(stage, false, ip));
+            dialog.showAndWait().ifPresent(ip -> abrirJogo(stage, false, ip.trim()));
         });
 
         VBox root = new VBox(20, titulo, btnServidor, btnCliente);
