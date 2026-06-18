@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"com.mycompany.fivefieldkono.logica"},{"l":"com.mycompany.fivefieldkono.rede"},{"l":"com.mycompany.fivefieldkono.ui"},{"l":"com.mycompany.fivefieldkono.ui.control"},{"l":"com.mycompany.fivefieldkono.ui.view"}];updateSearchResults();
