@@ -8,7 +8,7 @@ package com.mycompany.fivefieldkono.logica;
  * desistência de um jogador. É a classe central da lógica do jogo,
  * independente da interface gráfica e da rede.
  *
- * @author Eduardo
+ * @author Eduardo e Laurindo
  * @version 1.0
  */
 public class Jogo {

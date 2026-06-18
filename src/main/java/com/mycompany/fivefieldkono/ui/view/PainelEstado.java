@@ -15,7 +15,7 @@ import javafx.scene.text.Font;
  * O cronómetro usa um {@link AnimationTimer} que atualiza o tempo a cada
  * frame, conforme abordado nos conteúdos de animação em JavaFX.
  *
- * @author Eduardo
+ * @author Eduardo e Laurindo
  * @version 1.0
  */
 public class PainelEstado {

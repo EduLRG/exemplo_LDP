@@ -6,7 +6,7 @@ package com.mycompany.fivefieldkono.logica;
  * Cada peça pertence a um {@link Jogador} e esse dono nunca muda
  * durante a partida (por isso o atributo é {@code final}).
  *
- * @author Eduardo
+ * @author Eduardo e Laurindo
  * @version 1.0
  */
 public class Peca {

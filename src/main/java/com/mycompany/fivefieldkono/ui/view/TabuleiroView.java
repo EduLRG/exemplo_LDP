@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
  * meta, a peça selecionada, os destinos válidos, as interseções diagonais
  * e as peças dos jogadores. Não contém lógica de jogo nem de rede.
  *
- * @author Eduardo
+ * @author Eduardo e Laurindo
  * @version 1.0
  */
 public class TabuleiroView {

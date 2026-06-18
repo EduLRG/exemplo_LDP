@@ -3,7 +3,7 @@ package com.mycompany.fivefieldkono.logica;
 /**
  * Níveis de dificuldade da inteligência artificial no modo singleplayer.
  *
- * @author Eduardo
+ * @author Eduardo e Laurindo
  * @version 1.0
  */
 public enum Dificuldade {

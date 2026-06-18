@@ -11,7 +11,7 @@ import com.mycompany.fivefieldkono.rede.*;
  * termina. Os eventos recebidos são entregues ao {@link RedeListener}
  * fornecido (normalmente o controlador do jogo).
  *
- * @author Eduardo
+ * @author Eduardo e Laurindo
  * @version 1.0
  */
 public class GestorRede {

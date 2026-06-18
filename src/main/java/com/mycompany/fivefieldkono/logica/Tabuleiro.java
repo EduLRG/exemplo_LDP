@@ -9,7 +9,7 @@ package com.mycompany.fivefieldkono.logica;
  * enquanto os diagonais só são permitidos a partir de interseções
  * onde a soma da linha com a coluna é par.
  *
- * @author Eduardo
+ * @author Eduardo e Laurindo
  * @version 1.0
  */
 public class Tabuleiro {

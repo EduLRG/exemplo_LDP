@@ -11,7 +11,7 @@ import javafx.util.Duration;
  * Encapsula a {@link IA} e usa um {@link PauseTransition} para que o
  * computador "pense" cerca de meio segundo antes de executar a jogada.
  *
- * @author Eduardo
+ * @author Eduardo e Laurindo
  * @version 1.0
  */
 public class GestorIA {

@@ -6,7 +6,7 @@ package com.mycompany.fivefieldkono.logica;
  * O jogo é disputado entre {@code JOGADOR1} e {@code JOGADOR2}. Esta
  * enumeração também sabe identificar quem é o adversário de um jogador.
  *
- * @author Eduardo
+ * @author Eduardo e Laurindo
  * @version 1.0
  */
 public enum Jogador {

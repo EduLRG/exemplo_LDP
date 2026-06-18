@@ -2,6 +2,7 @@ package com.mycompany.fivefieldkono.ui;
 
 import com.mycompany.fivefieldkono.logica.Dificuldade;
 import com.mycompany.fivefieldkono.ui.control.ControladorJogo;
+import com.mycompany.fivefieldkono.ui.view.EstiloAlert;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -21,7 +22,7 @@ import java.util.Optional;
  * cliente, ou sair. Cada opção abre a cena correspondente na janela
  * principal.
  *
- * @author Eduardo
+ * @author Eduardo e Laurindo
  * @version 1.0
  */
 public class MenuInicial {
@@ -93,6 +94,8 @@ public class MenuInicial {
         dialog.setTitle("Singleplayer");
         dialog.setHeaderText("Escolhe a dificuldade do computador:");
         dialog.getButtonTypes().setAll(facil, normal, cancelar);
+
+        EstiloAlert.aplicar(dialog);
 
         Optional<ButtonType> escolha = dialog.showAndWait();
         if (escolha.isPresent()) {

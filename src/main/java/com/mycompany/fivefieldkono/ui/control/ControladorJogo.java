@@ -3,6 +3,7 @@ package com.mycompany.fivefieldkono.ui.control;
 import com.mycompany.fivefieldkono.logica.*;
 import com.mycompany.fivefieldkono.rede.RedeListener;
 import com.mycompany.fivefieldkono.ui.FiveFieldKono;
+import com.mycompany.fivefieldkono.ui.view.EstiloAlert;
 import com.mycompany.fivefieldkono.ui.view.PainelEstado;
 import com.mycompany.fivefieldkono.ui.view.TabuleiroView;
 import javafx.application.Platform;
@@ -22,7 +23,7 @@ import javafx.scene.paint.Color;
  * {@link TabuleiroView} e {@link PainelEstado}, a rede em
  * {@link GestorRede} e a jogada do computador em {@link GestorIA}.
  *
- * @author Eduardo
+ * @author Eduardo e Laurindo
  * @version 1.0
  */
 public class ControladorJogo implements RedeListener {
@@ -157,6 +158,7 @@ public class ControladorJogo implements RedeListener {
             "• Movimento DIAGONAL: só permitido em interseções onde (linha + coluna) é PAR.\n\n" +
             "• Objetivo: levar as tuas 10 peças para as 2 linhas iniciais do adversário."
         );
+        EstiloAlert.aplicar(alert);
         alert.showAndWait();
     }
 
@@ -167,6 +169,7 @@ public class ControladorJogo implements RedeListener {
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION,
             "Tens a certeza que queres desistir?",
             ButtonType.YES, ButtonType.NO);
+        EstiloAlert.aplicar(confirm);
         confirm.showAndWait().ifPresent(bt -> {
             if (bt == ButtonType.YES) {
                 if (!singleplayer && gestorRede != null) gestorRede.enviar("DESISTIR");
@@ -174,8 +177,6 @@ public class ControladorJogo implements RedeListener {
             }
         });
     }
-
-    // ---------------- REDE ----------------
 
     /**
      * Arranca a ligação de rede consoante o papel (servidor ou cliente).
@@ -228,6 +229,7 @@ public class ControladorJogo implements RedeListener {
         alerta.setTitle("Servidor Criado");
         alerta.setHeaderText("Partilha isto com o teu colega:");
         alerta.setContentText("IP:PORTA = " + ip + ":" + porta + "\n\nAguarda que o colega se ligue...");
+        EstiloAlert.aplicar(alerta);
         alerta.show();
     }
 
@@ -269,8 +271,6 @@ public class ControladorJogo implements RedeListener {
             mostrarVencedor();
         }
     }
-
-    // ---------------- INTERAÇÃO ----------------
 
     /**
      * Trata um clique no tabuleiro: seleciona uma peça ou tenta movê-la.
@@ -372,6 +372,7 @@ public class ControladorJogo implements RedeListener {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Fim do Jogo");
         alert.setHeaderText(msg);
+        EstiloAlert.aplicar(alert);
         alert.showAndWait();
         terminarEVoltar();
     }

@@ -11,7 +11,7 @@ import java.util.Random;
  * Conforme a {@link Dificuldade}, joga ao acaso (FACIL) ou prefere
  * movimentos que aproximam as suas peças da zona de meta (NORMAL).
  *
- * @author Eduardo
+ * @author Eduardo e Laurindo
  * @version 1.0
  */
 public class IA {

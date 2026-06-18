@@ -7,7 +7,7 @@ package com.mycompany.fivefieldkono.logica;
  * ocupa, ou {@code null} caso esteja vazia. Sabe ainda dizer se é uma
  * interseção onde os movimentos diagonais são permitidos.
  *
- * @author Eduardo
+ * @author Eduardo e Laurindo
  * @version 1.0
  */
 public class Celula {

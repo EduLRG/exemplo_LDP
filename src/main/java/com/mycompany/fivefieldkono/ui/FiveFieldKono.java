@@ -10,7 +10,7 @@ import javafx.stage.Stage;
  * {@link MenuInicial}. O regresso ao menu a partir de uma partida também
  * passa por aqui, mantendo uma única janela principal.
  *
- * @author Eduardo
+ * @author Eduardo e Laurindo
  * @version 1.0
  */
 public class FiveFieldKono extends Application {

@@ -11,7 +11,7 @@ import java.util.Enumeration;
  * interfaces de loopback e endereços de VPN, para que o servidor mostre o
  * IP correto a partilhar com o adversário.
  *
- * @author Eduardo
+ * @author Eduardo e Laurindo
  * @version 1.0
  */
 public final class UtilRede {
