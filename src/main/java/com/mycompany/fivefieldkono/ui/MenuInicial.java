@@ -55,8 +55,8 @@ public class MenuInicial {
         titulo.setTextFill(Color.WHITE);
 
         Button btnSingle   = new Button("Singleplayer");
-        Button btnServidor = new Button("Criar Jogo (Servidor)");
-        Button btnCliente  = new Button("Entrar no Jogo (Cliente)");
+        Button btnServidor = new Button("Criar Jogo");
+        Button btnCliente  = new Button("Entrar no Jogo");
         Button btnSair      = new Button("Sair");
 
         for (Button b : new Button[]{ btnSingle, btnServidor, btnCliente, btnSair })

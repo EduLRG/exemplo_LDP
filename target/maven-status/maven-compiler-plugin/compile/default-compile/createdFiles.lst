@@ -1,8 +1,10 @@
+com/mycompany/fivefieldkono/ui/view/GestorSom.class
 com/mycompany/fivefieldkono/logica/Jogador.class
 com/mycompany/fivefieldkono/ui/control/GestorIA.class
 com/mycompany/fivefieldkono/ui/control/GestorRede.class
 com/mycompany/fivefieldkono/logica/Celula.class
 com/mycompany/fivefieldkono/ui/FiveFieldKono.class
+com/mycompany/fivefieldkono/ui/view/EstiloAlert.class
 com/mycompany/fivefieldkono/logica/IA$Movimento.class
 com/mycompany/fivefieldkono/ui/view/PainelEstado.class
 com/mycompany/fivefieldkono/logica/Tabuleiro.class

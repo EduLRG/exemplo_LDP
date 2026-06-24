@@ -29,12 +29,22 @@ public final class GestorSom {
      */
     public static void carregar() {
         try {
-            somMover = new AudioClip(
-                GestorSom.class.getResource("/sons/mover.mp3").toExternalForm());
-            somVitoria = new AudioClip(
-                GestorSom.class.getResource("/sons/vitoria.mp3").toExternalForm());
+            var urlMover = GestorSom.class.getResource("/sons/mover.mp3");
+            var urlVitoria = GestorSom.class.getResource("/sons/vitoria.mp3");
+
+            if (urlMover != null) {
+                somMover = new AudioClip(urlMover.toExternalForm());
+            } else {
+                System.out.println("AVISO: /sons/mover.mp3 não encontrado");
+            }
+
+            if (urlVitoria != null) {
+                somVitoria = new AudioClip(urlVitoria.toExternalForm());
+            } else {
+                System.out.println("AVISO: /sons/vitoria.mp3 não encontrado");
+            }
         } catch (Exception e) {
-            System.out.println("Não foi possível carregar os sons: " + e.getMessage());
+            System.out.println("Erro ao carregar sons: " + e.getMessage());
         }
     }
 
