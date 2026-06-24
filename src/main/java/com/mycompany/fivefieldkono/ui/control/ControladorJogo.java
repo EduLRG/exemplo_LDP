@@ -1,11 +1,14 @@
+
 package com.mycompany.fivefieldkono.ui.control;
 
 import com.mycompany.fivefieldkono.logica.*;
 import com.mycompany.fivefieldkono.rede.RedeListener;
 import com.mycompany.fivefieldkono.ui.FiveFieldKono;
 import com.mycompany.fivefieldkono.ui.view.EstiloAlert;
+import com.mycompany.fivefieldkono.ui.view.GestorSom;
 import com.mycompany.fivefieldkono.ui.view.PainelEstado;
 import com.mycompany.fivefieldkono.ui.view.TabuleiroView;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 /**
  * Coordena uma partida de Five Field Kono, ligando a lógica do jogo às
@@ -263,6 +267,7 @@ public class ControladorJogo implements RedeListener {
             String[] p = msg.substring(5).split(",");
             jogo.jogar(Integer.parseInt(p[0]), Integer.parseInt(p[1]),
                        Integer.parseInt(p[2]), Integer.parseInt(p[3]));
+            GestorSom.tocarMover();
             redesenhar();
             atualizarTurno();
             if (jogo.isTerminado()) mostrarVencedor();
@@ -301,6 +306,7 @@ public class ControladorJogo implements RedeListener {
                 if (!singleplayer && gestorRede != null) {
                     gestorRede.enviar("MOVE:" + selLinha + "," + selColuna + "," + lin + "," + col);
                 }
+                GestorSom.tocarMover();
                 limparSelecao();
                 redesenhar();
                 atualizarTurno();
@@ -314,6 +320,7 @@ public class ControladorJogo implements RedeListener {
                     selLinha = lin;
                     selColuna = col;
                 } else {
+                    tremerTabuleiro();
                     limparSelecao();
                 }
                 redesenhar();
@@ -327,6 +334,7 @@ public class ControladorJogo implements RedeListener {
     private void jogarComputador() {
         painelEstado.setTurno("O computador está a pensar...", false);
         gestorIA.jogar(jogo, () -> {
+            GestorSom.tocarMover();
             redesenhar();
             atualizarTurno();
             if (jogo.isTerminado()) mostrarVencedor();
@@ -349,6 +357,20 @@ public class ControladorJogo implements RedeListener {
     }
 
     /**
+     * Faz o tabuleiro tremer brevemente para os lados, como feedback visual
+     * de um movimento inválido.
+     */
+    private void tremerTabuleiro() {
+        TranslateTransition shake = new TranslateTransition(Duration.millis(50), tabuleiroView.getCanvas());
+        shake.setFromX(0);
+        shake.setByX(10);
+        shake.setCycleCount(6);
+        shake.setAutoReverse(true);
+        shake.setOnFinished(e -> tabuleiroView.getCanvas().setTranslateX(0));
+        shake.play();
+    }
+
+    /**
      * Atualiza o painel de estado com o jogador da vez.
      */
     private void atualizarTurno() {
@@ -366,7 +388,9 @@ public class ControladorJogo implements RedeListener {
      */
     private void mostrarVencedor() {
         painelEstado.pararCronometro();
-        String msg = jogo.getVencedor() == meuJogador
+        boolean ganhei = jogo.getVencedor() == meuJogador;
+        if (ganhei) GestorSom.tocarVitoria();
+        String msg = ganhei
             ? "Ganhaste! Parabéns!"
             : (singleplayer ? "O computador venceu!" : "Perdeste. O adversário venceu.");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

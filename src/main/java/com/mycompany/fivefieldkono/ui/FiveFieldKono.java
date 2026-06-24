@@ -1,5 +1,7 @@
+
 package com.mycompany.fivefieldkono.ui;
 
+import com.mycompany.fivefieldkono.ui.view.GestorSom;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -28,6 +30,7 @@ public class FiveFieldKono extends Application {
      */
     @Override
     public void start(Stage stage) {
+        GestorSom.carregar();
         this.stagePrincipal = stage;
         this.menu = new MenuInicial(this, stage);
         stage.setScene(menu.criarCena());
